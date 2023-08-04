@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class ProductSign {
 	public static int getProductSign(int[] nums) {
-		int product = 1;
+		double product = 1;
 		for (int i = 0; i < nums.length; i++)
 			product = product * nums[i];
 		if (product > 0)
@@ -38,12 +38,18 @@ public class ProductSign {
 
 	@Test
 	public void test5() {
-		Assert.assertEquals(-1, getProductSign(new int[] { 2, 3, 4, -1 }));
+		Assert.assertEquals(-1, getProductSign(new int[] { 2, 3, 4, -2 }));
 	}
 
 	@Test
 	public void test6() {
 		Assert.assertEquals(0, getProductSign(new int[] { 2, 3, 4, -1, 0 }));
 	}
+	
+	//41,65,14,80,20,10,55,58,24,56,28,86,96,10,3,84,4,41,13,32,42,43,83,78,82,70,15,-41
 
+	@Test
+	public void test7() {
+		Assert.assertEquals(-1, getProductSign(new int[] { 41,65,14,80,20,10,55,58,24,56,28,86,96,10,3,84,4,41,13,32,42,43,83,78,82,70,15,-41 }));
+	}
 }
