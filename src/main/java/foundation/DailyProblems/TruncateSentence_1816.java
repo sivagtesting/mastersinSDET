@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 
-public class TruncateSentence {
+public class TruncateSentence_1816 {
 	/*
 	 * https://leetcode.com/problems/truncate-sentence/description/
 	 * 
@@ -26,18 +26,20 @@ public class TruncateSentence {
 	 */
 	
 	public static String truncateSentence(String s, int k) {
-		String op = "";
 		if (k == 1) {
 			if (s.indexOf(" ") < 0)
 				return s;
 			else
 				return s.substring(0, s.indexOf(" "));
-		} else {
+		} else if (s.split(" ").length == k)
+			return s;
+		else {
+			StringBuilder op = new StringBuilder(s.split(" ").length);
 			String[] sInp = s.split(" ");
 			for (int i = 0; i < k; i++) {
-				op = op + " " + sInp[i];
+				op.append(sInp[i] + " ");
 			}
-			return op.trim();
+			return op.toString().trim();
 		}
 	}
 	
