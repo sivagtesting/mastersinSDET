@@ -1,9 +1,7 @@
 package foundation.DailyProblems;
 
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Set;
 import org.junit.Test;
 import org.testng.Assert;
 
@@ -53,26 +51,38 @@ public class DecodeTheMessage_2325 {
 	public static String decodeMessage(String key, String message) {
 
         StringBuilder decodedMsg = new StringBuilder(message.length());
-        Map<Character,Integer> chiperKey = new HashMap<Character, Integer>();
-        Set<Character> chiperKeyUnqiueChars = new LinkedHashSet<Character>();
+        Map<Character,Character> chiperKey = new HashMap<Character, Character>();
         key = key.replaceAll(" ", "");
-        for(int i=0; i<key.length(); i++){
-            chiperKeyUnqiueChars.add(key.charAt(i));
-        }
-        int i = 0;
-        for(char c: chiperKeyUnqiueChars){
-            chiperKey.put(c,97+i);
-            i++;
-        }
-        for(int j=0; j<message.length(); j++){
-            if(message.charAt(j)<97 || message.charAt(j)>123)
-                decodedMsg.append(" ");
-            else {
-            	decodedMsg.append((char) chiperKey.get(message.charAt(j)).intValue());
-            }
+        char c = 'a';
+        for (int i = 0; i < key.length(); i++) {
+        	if(!chiperKey.containsKey(key.charAt(i)))
+        		chiperKey.put(key.charAt(i), c++);
+		}
+        for(int i=0; i<message.length(); i++){
+            if(chiperKey.containsKey(message.charAt(i)))
+            	decodedMsg.append(chiperKey.get(message.charAt(i)));
+            else 
+            	decodedMsg.append(" ");
         }
         return decodedMsg.toString();
     }
+	
+	public static String decodeMessageBruteForceApproach(String key, String message) {
+		StringBuilder alphabets = new StringBuilder(26);
+		StringBuilder decodedMsg = new StringBuilder(message.length());
+		String temp = key.replaceAll(" ", "");
+		for (int i = 0; i < temp.length(); i++) {
+			if(!alphabets.toString().contains(temp.charAt(i)+""))
+				alphabets.append(temp.charAt(i));
+		}
+		for (int i = 0; i < message.length(); i++) {
+			if(alphabets.toString().contains(message.charAt(i)+""))
+					decodedMsg.append((char) (97 + alphabets.indexOf(message.charAt(i)+"")));
+			else
+				decodedMsg.append(" ");
+		}
+		return decodedMsg.toString();
+	}
 	
 	@Test
 	public void test1() {
@@ -80,6 +90,7 @@ public class DecodeTheMessage_2325 {
 		String message = "vkbs bs t suepuv";
 		String output = "this is a secret";
 		Assert.assertEquals(output, decodeMessage(key, message));
+		Assert.assertEquals(output, decodeMessageBruteForceApproach(key, message));
 	}
 	
 	@Test
@@ -88,6 +99,7 @@ public class DecodeTheMessage_2325 {
 		String message = "i love my country";
 		String output = "i love my country";
 		Assert.assertEquals(output, decodeMessage(key, message));
+		Assert.assertEquals(output, decodeMessageBruteForceApproach(key, message));
 	}
 	
 	@Test
@@ -96,6 +108,7 @@ public class DecodeTheMessage_2325 {
 		String message = "r olev";
 		String output = "i love";
 		Assert.assertEquals(output, decodeMessage(key, message));
+		Assert.assertEquals(output, decodeMessageBruteForceApproach(key, message));
 	}
 
 }
