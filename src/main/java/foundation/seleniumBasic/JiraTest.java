@@ -1,10 +1,13 @@
 package foundation.seleniumBasic;
 
 import java.time.Duration;
+import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class JiraTest {
@@ -27,7 +30,11 @@ public class JiraTest {
 		driver.findElement(By.id("summary-field")).sendKeys("New Story created by Siva_SDET for Automation");
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
 		driver.findElement(By.xpath("//span[text()='Backlog']")).click();
-		
+		List<WebElement> userStories = driver.findElements(By.xpath("//span[text()='New Story created by Siva_SDET for Automation']"));
+		for (WebElement webElement : userStories) {
+			Assert.assertEquals("New Story created by Siva_SDET for Automation", webElement.getText());
+		}
+		driver.close();
 	}
 
 }
