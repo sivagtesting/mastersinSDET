@@ -24,7 +24,7 @@ public class SortingTheSentence_1859 {
 			input the each word in the current index to char array at index dervied from last character
 			iterate over the char array and append to the output string removing the digit
 	 * 
-	 * Complexity of the program:
+	 * Complexity of the program: O[n]
 	 * 
 	 * 
 	 */
