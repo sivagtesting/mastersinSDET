@@ -21,6 +21,8 @@ public class NumberOfSubArrays_1343 {
 	 * 		if yes then increment counter;
 	 * return counter;
 	 * 
+	 * TimeComplexity: O[N]
+	 * 
 	 */
 	
 	public int numOfSubarrays(int[] arr, int k, int threshold) {

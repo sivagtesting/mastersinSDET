@@ -17,7 +17,7 @@ public class ShuffleString_1528 {
 	 *		e should be moved to 7// [0,1,2,3,c,o,d,e]
 	 *		and so on
 	 *
-	 * 
+	 * codeleet -> lodeceet
 	 * 
 	 */
 	

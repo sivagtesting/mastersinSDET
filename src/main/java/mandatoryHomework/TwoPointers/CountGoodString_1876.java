@@ -8,6 +8,10 @@ import org.testng.Assert;
 
 public class CountGoodString_1876 {
 	
+	/*
+	 * https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/description/
+	 */
+	
 	
 	public int countGoodSubStrings_TwoPointerOptimization(String s) {
 		if (s.length() < 3)

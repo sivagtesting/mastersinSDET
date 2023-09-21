@@ -23,6 +23,8 @@ public class LexicographicallySmallestPalindrome_2697 {
 			if no -> check which character is less, replace the character and increment left and decrement right
 			return the the string once the while loop ended.
 			10.40
+			
+			Time Complexity: O[N/2]
 	 * 
 	 */
 	
@@ -31,9 +33,9 @@ public class LexicographicallySmallestPalindrome_2697 {
 			return s;
 		else {
 			int left = 0, right = s.length() - 1;
-			StringBuilder sb = new StringBuilder(s);
-			while (left < right) {
-				if (sb.charAt(left) == sb.charAt(right)) {
+			StringBuilder sb = new StringBuilder(s); //O[1]
+			while (left < right) { //O[N/2]
+				if (sb.charAt(left) == sb.charAt(right)) { //O[1]
 					left++;
 					right--;
 				} else {

@@ -1,6 +1,8 @@
 package mandatoryHomework.TwoPointers;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.testng.Assert;
@@ -28,11 +30,56 @@ public class NumberOfSubstringContainingabc_1358 {
 		return counter;
 	}
 	
+	/*
+	 * aabcabc - 7
+	 * 0123456
+	 * abcabc - 6
+	 * 012345
+	 * PseudoCode:
+	 * 1. initialize start=0, end=0, count =0;
+	 * 2. initialize a hashMap variable
+	 * 3. while end<s.length(): starting from end index insert each char from input string 
+	 * 4. while putting to map if already present then increment the value else update value as one and increment end
+	 * 5. check size of map after each insert is 3
+	 * 		5.1 if yes, then calculate count using the formula => [count + (lengthOfString - end)],
+	 * 			and remove key - element at index start and increment start
+	 * 6. increment end index
+	 * 
+	 * 
+	 */
+	public int numberOfSubstringsOptimised(String s) {
+		Map<Character, Integer> charMap = new HashMap<>();
+		int start = 0, end = 0, count=0;
+		while(end<s.length()) {
+			charMap.put(s.charAt(end), charMap.getOrDefault(s.charAt(end), 0)+1);
+			if(charMap.size()==3) {
+				count += s.length()-end;
+				if(charMap.get(s.charAt(start))>1)
+					charMap.put(s.charAt(start), charMap.get(s.charAt(start))-1);
+				else
+					charMap.remove(s.charAt(start));
+				start++;
+			}
+			while(end==s.length()-1 && start<end) {
+				if(charMap.get(s.charAt(start))>1)
+					charMap.put(s.charAt(start), charMap.get(s.charAt(start))-1);
+				else
+					charMap.remove(s.charAt(start));
+			if(charMap.size()==3) 
+				count++;
+			start++;
+			}
+			end++;
+		}
+		return count;
+	}
+	
 	@Test
 	public void test1() {
-		String s = "abcabc";
+		String s = "aaacb";
 		int output = 10;
-		Assert.assertEquals(output, numberOfSubstrings(s));
+		//Assert.assertEquals(output, numberOfSubstrings(s));
+		Assert.assertEquals(output, numberOfSubstringsOptimised(s));
 	}
 	
 	@Test
