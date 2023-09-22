@@ -67,6 +67,32 @@ public class FindTheArrayConcatenationValue_2562 {
 		}
 	}
 	
+	public long findTheArrayConcVal_WithoutString(int[] nums) {
+		int start = 0, end = nums.length - 1, concatenation = 0;
+		int position = 1, temp = 0;
+		if (nums.length == 1)
+			return nums[0];
+		else {
+			while (start <= end) {
+				if (start == end)
+					concatenation += nums[start];
+				else {
+					temp = nums[end];
+					while(temp!=0) {
+						temp /= 10;
+						position *= 10;
+						
+					}
+					concatenation += (nums[start] * position) + nums[end];
+					position=1;
+				}
+				start++;
+				end--;
+			}
+			return concatenation;
+		}
+	}
+	
 	@Test
 	public void test1() {
 		int[] nums = {1000};
@@ -85,7 +111,16 @@ public class FindTheArrayConcatenationValue_2562 {
 	public void test3() {
 		int[] nums = {1,2,2,1};
 		int output = 33;
-		Assert.assertEquals(output, findTheArrayConcVal(nums));
+		//Assert.assertEquals(output, findTheArrayConcVal(nums));
+		Assert.assertEquals(output, findTheArrayConcVal_WithoutString(nums));
+	}
+	
+	@Test
+	public void test4() {
+		int[] nums = {1,2,2000,100}; //1100, 22000
+		int output = 23100;
+		//Assert.assertEquals(output, findTheArrayConcVal(nums));
+		Assert.assertEquals(output, findTheArrayConcVal_WithoutString(nums));
 	}
 
 }

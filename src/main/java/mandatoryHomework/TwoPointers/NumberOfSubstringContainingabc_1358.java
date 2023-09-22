@@ -49,25 +49,16 @@ public class NumberOfSubstringContainingabc_1358 {
 	 */
 	public int numberOfSubstringsOptimised(String s) {
 		Map<Character, Integer> charMap = new HashMap<>();
-		int start = 0, end = 0, count=0;
+		int start = 0, end = 0, count=0;//abcabc, aaaabca //aaaabc
 		while(end<s.length()) {
 			charMap.put(s.charAt(end), charMap.getOrDefault(s.charAt(end), 0)+1);
-			if(charMap.size()==3) {
+			while(charMap.size()==3) {
 				count += s.length()-end;
 				if(charMap.get(s.charAt(start))>1)
 					charMap.put(s.charAt(start), charMap.get(s.charAt(start))-1);
 				else
 					charMap.remove(s.charAt(start));
 				start++;
-			}
-			while(end==s.length()-1 && start<end) {
-				if(charMap.get(s.charAt(start))>1)
-					charMap.put(s.charAt(start), charMap.get(s.charAt(start))-1);
-				else
-					charMap.remove(s.charAt(start));
-			if(charMap.size()==3) 
-				count++;
-			start++;
 			}
 			end++;
 		}
@@ -77,7 +68,7 @@ public class NumberOfSubstringContainingabc_1358 {
 	@Test
 	public void test1() {
 		String s = "aaacb";
-		int output = 10;
+		int output = 3;
 		//Assert.assertEquals(output, numberOfSubstrings(s));
 		Assert.assertEquals(output, numberOfSubstringsOptimised(s));
 	}
