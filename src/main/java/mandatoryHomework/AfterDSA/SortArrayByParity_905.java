@@ -1,4 +1,4 @@
-package mandatoryHomework.TwoPointers;
+package mandatoryHomework.AfterDSA;
 
 public class SortArrayByParity_905 {
 	

@@ -1,4 +1,4 @@
-package mandatoryHomework.TwoPointers;
+package mandatoryHomework.AfterDSA;
 
 import java.util.HashSet;
 import java.util.Set;

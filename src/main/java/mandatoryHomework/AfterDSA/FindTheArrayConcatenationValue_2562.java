@@ -1,4 +1,4 @@
-package mandatoryHomework.TwoPointers;
+package mandatoryHomework.AfterDSA;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
