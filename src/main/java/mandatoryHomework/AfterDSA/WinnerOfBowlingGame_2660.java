@@ -31,45 +31,27 @@ public class WinnerOfBowlingGame_2660 {
 	 */
 	
 	public int isWinner(int[] player1, int[] player2) {
-		if (player1.length < 2)
-			return determineWinner(player1[0], player2[0]);
-		else {
 			int player1Score = 0, player2Score = 0;
-			player1Score = player1[0];
-			player2Score = player2[0];
-			for (int i = 1; i < player1.length; i++) {
-				if (i == 1) {
-					if (player1[i - 1] == 10)
-						player1Score += (player1[i] * 2);
-					else
-						player1Score += player1[i];
-					if (player2[i - 1] == 10)
-						player2Score += (player2[i] * 2);
-					else
-						player2Score += player2[i];
-				} else {
-					if (player1[i - 1] == 10 || player1[i - 2] == 10)
-						player1Score += (player1[i] * 2);
-					else
-						player1Score += player1[i];
-					if (player2[i - 1] == 10 || player2[i - 2] == 10)
-						player2Score += (player2[i] * 2);
-					else
-						player2Score += player2[i];
+			for (int i = 0; i < player1.length; i++) {
+				if(i == 1 && player1[i - 1] == 10)
+					player1Score += 2 * player1[i];
+				else if(i>=2 && (player1[i - 1] == 10 || player1[i - 2] == 10))
+					player1Score += 2 * player1[i];
+				else
+					player1Score += player1[i];
+				
+				if(i == 1 && player2[i - 1] == 10)
+					player2Score += 2 * player2[i];
+				else if(i>=2 && (player2[i - 1] == 10 || player2[i - 2] == 10))
+					player2Score += 2 * player2[i];
+				else
+					player2Score += player2[i];
 				}
+			if(player1Score==player2Score)
+				return 0;
+			else
+				return (player1Score>player2Score) ? 1 : 2;
 			}
-			return determineWinner(player1Score, player2Score);
-		}
-	}
-
-	public int determineWinner(int player1Score, int player2Score) {
-		if (player1Score > player2Score)
-			return 1;
-		else if (player2Score > player1Score)
-			return 2;
-		else
-			return 0;
-	}
 	
 	@Test
 	public void test1() {
