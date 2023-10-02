@@ -9,6 +9,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class NumberOfSubstringContainingabc_1358 {
+	
+	/*
+	 * https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/description/
+	 * 
+	 */
 
 	public int numberOfSubstrings(String s) {
 		int start = 0, counter = 0;
