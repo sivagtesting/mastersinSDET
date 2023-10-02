@@ -3,7 +3,13 @@ package foundation.DailyProblems;
 import org.junit.Test;
 import org.testng.Assert;
 
-public class CanPlaceFlowers {
+public class CanPlaceFlowers_605 {
+	
+	/*
+	 * https://leetcode.com/problems/can-place-flowers/description/
+	 * 
+	 * 
+	 */
 
 	public static boolean canPlaceFlowers(int[] flowerbed, int n) {
 		if (flowerbed.length == 1) {
