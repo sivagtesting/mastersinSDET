@@ -3,7 +3,7 @@ package foundation.week1.day2;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class Problem10MatchCount {
+public class CountOfMatchesInTournament_1688 {
 	public static int getNumberOfMatches(int n) {
 		int matchCount = 0;
 		int teamCount = n;

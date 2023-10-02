@@ -29,7 +29,8 @@ public class WinnerOfBowlingGame_2660 {
 			7.48
 	 * 
 	 */
-	
+	// Time Complexity: O(N)
+	// SpaceComplexity: O(1)
 	public int isWinner(int[] player1, int[] player2) {
 			int player1Score = 0, player2Score = 0;
 			for (int i = 0; i < player1.length; i++) {
@@ -77,4 +78,19 @@ public class WinnerOfBowlingGame_2660 {
 		Assert.assertEquals(isWinner(player1, player2), output);
 	}
 	
+	@Test
+	public void test4() {
+		int[] player1 = {10,3};
+		int[] player2 = {10,1};
+		int output = 1;
+		Assert.assertEquals(isWinner(player1, player2), output);
+	}
+	
+	@Test
+	public void test5() {
+		int[] player1 = {10};
+		int[] player2 = {11};
+		int output = 2;
+		Assert.assertEquals(isWinner(player1, player2), output);
+	}
 }
