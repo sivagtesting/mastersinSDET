@@ -26,29 +26,23 @@ public class LC_1684_ConsistentStrings {
 	public int countConsistentStrings(String allowed, String[] words) {
 		Set<Character> allowedSet = new HashSet<Character>();
 		int count = 0;
+		boolean flag = true;
 
 		
 		for (int i = 0; i < allowed.length(); i++)
 			allowedSet.add(allowed.charAt(i));
 		 
-
 		for (String eachWord : words) {
-			Set<Character> eachWordSet = new HashSet<Character>();
-			boolean flag = true;
-			for (int i = 0; i < eachWord.length(); i++)
-				eachWordSet.add(eachWord.charAt(i));
-
-			for (char c : eachWordSet) {
-				if (!allowedSet.contains(c))
+			for (int i = 0; i < eachWord.length(); i++) {
+				if(allowedSet.add(eachWord.charAt(i))) {
+					allowedSet.remove(eachWord.charAt(i));
 					flag = false;
+					break;
+				}
 			}
-			
-//			for (char c : eachWordSet) {
-//				if (allowed.indexOf(c)<0)
-//					flag = false;
-//			}
 			if (flag)
 				count++;
+			else flag = true;
 		}
 
 		return count;
