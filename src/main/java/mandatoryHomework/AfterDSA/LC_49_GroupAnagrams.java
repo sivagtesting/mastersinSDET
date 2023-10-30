@@ -12,6 +12,8 @@ import org.testng.annotations.Test;
 public class LC_49_GroupAnagrams {
 	
 	/*
+	 * https://leetcode.com/problems/group-anagrams/description/
+	 * 
 		PseudoCode:
 			Initialize a List<List<String>> varaible output
 			Add the first string from the input string array strs
@@ -73,7 +75,7 @@ public class LC_49_GroupAnagrams {
 			return map1.equals(map2);
 		}
 	}
-	
+
 	@Test
 	public void test1() {
 		String[] strs = { "eat", "tea", "tan", "ate", "nat", "bat" };
